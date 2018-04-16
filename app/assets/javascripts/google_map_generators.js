@@ -1,6 +1,6 @@
 function init() {
   var mapOptions = {                                 // Настраиваем параметры карты
-    center: new google.maps.LatLng(39.907975, 32.858992),
+    center: new google.maps.LatLng(54.9718,73.3772),
     scrollwheel: false,
     zoom: 13
   };
