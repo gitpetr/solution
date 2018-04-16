@@ -1,9 +1,12 @@
 function init() {
+  var uluru = new google.maps.LatLng(54.9718,73.3772);
+
   var mapOptions = {                                 // Настраиваем параметры карты
-    center: new google.maps.LatLng(54.9718,73.3772),
+    center: uluru,
     scrollwheel: false,
     zoom: 13
   };
+
   var map;                                      // Map() рисует карту
   map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
@@ -28,6 +31,12 @@ function init() {
            scrollwheel: false
        });
     });
+    // Добавляем маркер
+    var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+
 
 }
 
