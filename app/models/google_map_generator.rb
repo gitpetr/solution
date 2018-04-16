@@ -1,0 +1,2 @@
+class GoogleMapGenerator < ApplicationRecord
+end

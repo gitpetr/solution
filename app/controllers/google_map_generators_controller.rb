@@ -1,0 +1,2 @@
+class GoogleMapGeneratorsController < ApplicationController
+end
