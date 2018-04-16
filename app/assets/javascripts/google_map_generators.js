@@ -33,7 +33,7 @@ function init() {
 
 function loadScript() {
   var script = document.createElement('script');     // Создаем элемент script
-  script.src = 'http://maps.googleapis.com/maps/api/js?key=AIzaSyDO0tO7a6gKTQSo8PidHuQYNjr-_4PKFvo&callback=init';
+  script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDO0tO7a6gKTQSo8PidHuQYNjr-_4PKFvo&callback=init';
   document.body.appendChild(script);                 // Добавляем элемент на страницу
 }
 
