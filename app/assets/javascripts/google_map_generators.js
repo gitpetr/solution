@@ -7,8 +7,17 @@ markLocation.forEach(function(item, i, arr) {
   locations.push({lat: 1 * coordinats[0], lng: 1 * coordinats[1]})
 });
 
+
+
 function init() {
-  var uluru = new google.maps.LatLng(54.9718,73.3772);
+  if (locations.length > 0) {
+    var coordinats = locations[0]
+    var uluru = new google.maps.LatLng(coordinats.lat, coordinats.lng);
+  } 
+  else {
+    var uluru = new google.maps.LatLng(54.9718,73.3772);
+  }
+  
 
   var mapOptions = {                                 // Настраиваем параметры карты
     center: uluru,
@@ -62,6 +71,11 @@ function init() {
     var latitude = document.getElementById('latitude').value;
     var longitude = document.getElementById('longitude').value;
     locations.push({lat: 1 * latitude, lng: 1 * longitude});
+
+    map.setOptions({
+         center: new google.maps.LatLng(1 * latitude, 1 * longitude)
+     });
+
     link = link + latitude + '/' + longitude + '&'
     console.log(link)
     createrMarker();
