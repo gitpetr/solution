@@ -15,3 +15,4 @@
 //= require rails-ujs
 //= require activestorage
 //= require google_map_generators
+//= require markerclusterer

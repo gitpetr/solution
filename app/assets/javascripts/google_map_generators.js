@@ -1,3 +1,7 @@
+var locations = [
+      {lat: 54.97, lng: 73.37}
+    ];
+
 function init() {
   var uluru = new google.maps.LatLng(54.9718,73.3772);
 
@@ -9,34 +13,52 @@ function init() {
 
   var map;                                      // Map() рисует карту
   map = new google.maps.Map(document.getElementById('map'), mapOptions);
+  var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-   map.addListener('click', function() {
-       map.setOptions({
-           scrollwheel: true
-       });
-    });
-
+  map.addListener('click', function() {
+      map.setOptions({
+          scrollwheel: true
+      });
+  });
 
     // Enable scroll zoom after drag on map
-    map.addListener('drag', function() {
+  map.addListener('drag', function() {
        map.setOptions({
            scrollwheel: true
        });
-    });
+  });
 
-
-    // Disable scroll zoom when mouse leave map
-    map.addListener('mouseout', function() {
-       map.setOptions({
-           scrollwheel: false
-       });
-    });
-    // Добавляем маркер
-    var marker = new google.maps.Marker({
-          position: uluru,
-          map: map
+  // Disable scroll zoom when mouse leave map
+  map.addListener('mouseout', function() {
+     map.setOptions({
+         scrollwheel: false
+     });
+  });
+   
+  function createrMarker() {
+    var markerCluster = new MarkerClusterer(map, markers,
+      {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+    var markers = locations.map(function(location, i) {
+        return new google.maps.Marker({
+          position: location,
+          label: labels[i % labels.length]
         });
+      });
+    var markerCluster = new MarkerClusterer(map, markers,
+        {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+  };
+  createrMarker();
+  
+  var submitLocation = document.getElementById('addMarker');
 
+  submitLocation.addEventListener('click', addLocation, false)
+
+  function addLocation() {
+    var latitude = document.getElementById('latitude').value;
+    var longitude = document.getElementById('longitude').value;
+    locations.push({lat: 1 * latitude, lng: 1 * longitude});
+    createrMarker();
+  };
 
 }
 

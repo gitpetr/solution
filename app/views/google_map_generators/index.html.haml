@@ -2,5 +2,12 @@
 .row
   .col-md-2
   .col-md-8
+    %h4 Добавить маркер
+    %p
+      %form
+        %input.form-control#latitude{"aria-describedby": "sizing-addon2", placeholder: "широта", type: "text"}/ 
+        %input.form-control#longitude{"aria-describedby": "sizing-addon2", placeholder: "долгота", type: "text"}/
+        %button.btn.btn-default#addMarker{type: "button"} Добавить!
+
     = render 'map'
   .col-md-2
