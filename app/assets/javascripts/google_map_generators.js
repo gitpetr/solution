@@ -1,6 +1,11 @@
-var locations = [
-      {lat: 54.97, lng: 73.37}
-    ];
+var locations = [];
+var link = 'https://google-map-generator.herokuapp.com/?';
+var markLocation = window.location.search.substr(1).split('&');
+
+markLocation.forEach(function(item, i, arr) {
+  coordinats = item.split('/');
+  locations.push({lat: 1 * coordinats[0], lng: 1 * coordinats[1]})
+});
 
 function init() {
   var uluru = new google.maps.LatLng(54.9718,73.3772);
@@ -57,7 +62,11 @@ function init() {
     var latitude = document.getElementById('latitude').value;
     var longitude = document.getElementById('longitude').value;
     locations.push({lat: 1 * latitude, lng: 1 * longitude});
+    link = link + latitude + '/' + longitude + '&'
+    console.log(link)
     createrMarker();
+    var setlink = document.getElementById('jslink');
+    setlink.innerText = 'Ссылка на карту: ' + link;
   };
 
 }
