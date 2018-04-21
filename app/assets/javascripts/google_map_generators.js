@@ -1,7 +1,6 @@
 var locations = [];
 var link = 'https://google-map-generator.herokuapp.com/?';
 var markLocation = window.location.search.substr(1).split('&');
-
 markLocation.forEach(function(item, i, arr) {
   coordinats = item.split('/');
   locations.push({lat: 1 * coordinats[0], lng: 1 * coordinats[1]})
